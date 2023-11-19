@@ -198,10 +198,10 @@ function restartGame(){
 </script>
 
 <template>
-
+<!--
 <button @click="player='X'">X player</button>
 <button @click="player='O'">O player</button>
-
+-->
 <h3>
   Current Player {{ player }}
 </h3>
