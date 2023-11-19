@@ -7,9 +7,9 @@ let Xplayer = []
 let Oplayer = []
 
 let gameState = {
-  sq1: ref('G'),sq2: ref('G'),sq3: ref('G'),
-  sq4: ref('G'),sq5: ref('G'),sq6: ref('G'),
-  sq7: ref('G'),sq8: ref('G'),sq9: ref('G')
+  sq1: ref(' '),sq2: ref(' '),sq3: ref(' '),
+  sq4: ref(' '),sq5: ref(' '),sq6: ref(' '),
+  sq7: ref(' '),sq8: ref(' '),sq9: ref(' ')
 }
 
 let gameComplete = false;
@@ -84,7 +84,11 @@ function sqClick(sqnum) {
         break
     }
   }
-
+  if (player.value == 'X') {
+    player.value = 'O'
+  } else {
+    player.value = 'X'
+  }
   checkWin()
 }
 
@@ -176,15 +180,15 @@ function checkWin() {
 function restartGame(){
   Xplayer = []
   Oplayer = []
-  gameState.sq1.value = 'G'
-  gameState.sq2.value = 'G'
-  gameState.sq3.value = 'G'
-  gameState.sq4.value = 'G'
-  gameState.sq5.value = 'G'
-  gameState.sq6.value = 'G'
-  gameState.sq7.value = 'G'
-  gameState.sq8.value = 'G'
-  gameState.sq9.value = 'G'
+  gameState.sq1.value = ' '
+  gameState.sq2.value = ' '
+  gameState.sq3.value = ' '
+  gameState.sq4.value = ' '
+  gameState.sq5.value = ' '
+  gameState.sq6.value = ' '
+  gameState.sq7.value = ' '
+  gameState.sq8.value = ' '
+  gameState.sq9.value = ' '
   gameComplete = false
   console.log('Game Restarted')
 
@@ -204,21 +208,21 @@ function restartGame(){
 
   <div id="container">
     <div id="toprow">
-      <button id="sq1" @click="sqClick(1)">{{ gameState.sq1 }}</button>
-      <button id="sq2" @click="sqClick(2)">{{ gameState.sq2 }}</button>
-      <button id="sq3" @click="sqClick(3)">{{ gameState.sq3 }}</button>
+      <button id="sq1" @click="sqClick(1)" :disabled="gameState.sq1.value == 'X' || gameState.sq1.value == 'O' || gameComplete">{{ gameState.sq1 }}</button>
+      <button id="sq2" @click="sqClick(2)" :disabled="gameState.sq2.value == 'X' || gameState.sq2.value == 'O' || gameComplete">{{ gameState.sq2 }}</button>
+      <button id="sq3" @click="sqClick(3)" :disabled="gameState.sq3.value == 'X' || gameState.sq3.value == 'O' || gameComplete">{{ gameState.sq3 }}</button>
     </div>
 
     <div id="midrow">
-      <button id="sq4" @click="sqClick(4)">{{ gameState.sq4 }}</button>
-      <button id="sq5" @click="sqClick(5)">{{ gameState.sq5 }}</button>
-      <button id="sq6" @click="sqClick(6)">{{ gameState.sq6 }}</button>
+      <button id="sq4" @click="sqClick(4)" :disabled="gameState.sq4.value == 'X' || gameState.sq4.value == 'O' || gameComplete">{{ gameState.sq4 }}</button>
+      <button id="sq5" @click="sqClick(5)" :disabled="gameState.sq5.value == 'X' || gameState.sq5.value == 'O' || gameComplete">{{ gameState.sq5 }}</button>
+      <button id="sq6" @click="sqClick(6)" :disabled="gameState.sq6.value == 'X' || gameState.sq6.value == 'O' || gameComplete">{{ gameState.sq6 }}</button>
     </div>
 
     <div id="botrow">
-      <button id="sq7" @click="sqClick(7)">{{ gameState.sq7 }}</button>
-      <button id="sq8" @click="sqClick(8)">{{ gameState.sq8 }}</button>
-      <button id="sq9" @click="sqClick(9)">{{ gameState.sq9 }}</button>
+      <button id="sq7" @click="sqClick(7)" :disabled="gameState.sq7.value == 'X' || gameState.sq7.value == 'O' || gameComplete">{{ gameState.sq7 }}</button>
+      <button id="sq8" @click="sqClick(8)" :disabled="gameState.sq8.value == 'X' || gameState.sq8.value == 'O' || gameComplete">{{ gameState.sq8 }}</button>
+      <button id="sq9" @click="sqClick(9)" :disabled="gameState.sq9.value == 'X' || gameState.sq9.value == 'O' || gameComplete">{{ gameState.sq9 }}</button>
     </div>
 
     <div>
